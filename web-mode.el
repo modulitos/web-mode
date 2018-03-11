@@ -9925,15 +9925,6 @@ Prompt user if TAG-NAME isn't provided."
           (setq end (or (next-single-property-change pos prop) (point-max)))))
       (when (and beg (string= (buffer-substring-no-properties beg (+ beg 2)) "//"))
         (goto-char end)
-        (while (and (looking-at-p "\n[ ]*//")
-                    (not (eobp)))
-          (search-forward "//")
-          (backward-char 2)
-          ;;(message "%S" (point))
-          (setq end (next-single-property-change (point) prop))
-          (goto-char end)
-          ;;(message "%S" (point))
-          ) ;while
         ) ;when
       (when end (setq end (1- end)))
       ) ;save-excursion
